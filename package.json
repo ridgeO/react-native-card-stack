@@ -1,6 +1,6 @@
 {
   "name": "react-native-card-stack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A swipeable card stack component for React Native",
   "main": "hello.js",
   "scripts": {
@@ -23,5 +23,5 @@
   "bugs": {
     "url": "https://github.com/ridgeO/react-native-card-stack/issues"
   },
-  "homepage": "https://github.com/ridgeO/react-native-card-stack#readme",
+  "homepage": "https://github.com/ridgeO/react-native-card-stack#readme"
 }
