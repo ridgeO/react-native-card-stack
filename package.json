@@ -1,0 +1,27 @@
+{
+  "name": "react-native-card-stack",
+  "version": "0.1.0",
+  "description": "A swipeable card stack component for React Native",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridgeO/react-native-card-stack.git"
+  },
+  "keywords": [
+    "Card",
+    "Cards",
+    "Swipe",
+    "Stack",
+    "Swipeable",
+    "Tinder"
+  ],
+  "author": "Ridge O <ridge@platypusindustries.com> (http://platypus.is)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridgeO/react-native-card-stack/issues"
+  },
+  "homepage": "https://github.com/ridgeO/react-native-card-stack#readme",
+}
