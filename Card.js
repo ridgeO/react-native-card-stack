@@ -1,13 +1,13 @@
 'use strict';
 import React, { Component } from 'react';
 import {
+  StyleSheet,
   PanResponder,
   Animated,
   View,
   Image,
   Text
 } from 'react-native';
-import Styles from './Styles.js';
 
 export default class Card extends Component {
 
@@ -29,10 +29,16 @@ export default class Card extends Component {
         null, {dx: this.state.pan.x, dy: this.state.pan.y}
       ]),
       onPanResponderRelease: (e, {vx, vy}) => {
-        if (this.state.pan.x._value < -150) {
-          this.props.onSwipe(this.props.index)
-        } else if (this.state.pan.x._value > 150) {
-          this.props.onSwipe(this.props.index)
+        console.log(this.state.pan.x._value)
+        console.log(this.state.pan.y._value)
+        if (this.state.pan.x._value < this.props.leftSwipeThreshold) {
+          this.props.onSwipeLeft(this.props.index)
+        } else if (this.state.pan.x._value > this.props.rightSwipeThreshold) {
+          this.props.onSwipeRight(this.props.index)
+        } else if (this.state.pan.y._value < this.props.upSwipeThreshold) {
+          this.props.onSwipeUp(this.props.index)
+        } else if (this.state.pan.y._value > this.props.downSwipeThreshold) {
+          this.props.onSwipeDown(this.props.index)
         } else {
           Animated.spring(this.state.pan, {
             toValue: 0,
@@ -47,31 +53,65 @@ export default class Card extends Component {
     this.state.pan.y.removeAllListeners();
   }
 
-  getMainCardStyle() {
+  getCardStyle() {
+    return [
+      Styles.card,
+      {height: this.props.cardHeight},
+      {width: this.props.cardWidth},
+      {borderWidth: this.props.cardBorderWidth},
+      {borderColor: this.props.cardBorderColor},
+      {borderRadius: this.props.cardBorderRadius},
+      {justifyContent: 'center'},
+      {backgroundColor: this.props.cardBackgroundColor},
+      {overflow: 'hidden'}
+    ];
+  }
+
+  getAnimatedViewStyle() {
     let {pan} = this.state;
     return [
       Styles.mainCard,
       {position: 'absolute'},
-      {left: -175},
-      {top: -250},
+      {left: this.props.cardWidth/2*-1},
+      {top: this.props.cardHeight/2*-1},
       {transform: [{translateX: pan.x}, {translateY: pan.y},
-      {rotate: pan.x.interpolate({inputRange: [-150, 0, 150], outputRange: ["-20deg", "0deg", "20deg"]})}]},
-      {opacity: pan.x.interpolate({inputRange: [-150, 0, 150], outputRange: [0.5, 1, 0.5]})}
+      {rotate: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [`-${this.props.cardRotationDegrees}deg`, '0deg', `${this.props.cardRotationDegrees}deg`]})}]},
+      {opacity: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [this.props.cardOpacityShift, 1, this.props.cardOpacityShift]})}
     ];
   }
 
   render() {
-    let {picture, name, email} = this.props;
     return (
-      <Animated.View style={this.getMainCardStyle()} {...this.panResponder.panHandlers}>
-        <View style={Styles.card}>
-          <Image source={{uri: picture.large}} style={Styles.cardImage}/>
+      <Animated.View style={this.getAnimatedViewStyle()} {...this.panResponder.panHandlers}>
+        <View style={this.getCardStyle()}>
+          <Image source={{uri: this.props.cardImage}} style={Styles.cardImage}/>
           <View style={Styles.cardText}>
-            <Text style={Styles.cardTextMain}>{name.first} {name.last}</Text>
-            <Text style={Styles.cardTextSecondary}>{email}</Text>
+            <Text style={Styles.cardTextMain}>{this.props.cardTextMain}</Text>
+            <Text style={Styles.cardTextSecondary}>{this.props.cardTextSecondary}</Text>
           </View>
         </View>
       </Animated.View>
     );
   }
 }
+
+const Styles = StyleSheet.create({
+  cardImage: {
+    flex: 1,
+    backgroundColor: '#1E90FF'
+  },
+  cardText: {
+    margin: 20
+  },
+  cardTextMain: {
+    textAlign: 'left',
+    fontSize: 20,
+    backgroundColor: 'transparent'
+  },
+  cardTextSecondary: {
+    textAlign: 'left',
+    fontSize: 15,
+    color: 'grey',
+    backgroundColor: 'transparent'
+  }
+})

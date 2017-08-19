@@ -9,7 +9,7 @@ export default class CardStack extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      cards: [],
     };
   }
 
@@ -24,7 +24,7 @@ export default class CardStack extends Component {
       let response = await fetch('https://randomuser.me/api');
       let result = await response.json();
       this.setState({
-        users: [result.results[0], ...this.state.users],
+        cards: [result.results[0], ...this.state.cards],
       });
     } catch (err) {
       alert(JSON.stringify(err));
@@ -32,10 +32,10 @@ export default class CardStack extends Component {
   };
 
   handleRemove = (index) => {
-    let start = this.state.users.slice(0, index);
-    let end = this.state.users.slice(index + 1);
+    let start = this.state.cards.slice(0, index);
+    let end = this.state.cards.slice(index + 1);
     this.setState({
-      users: start.concat(end),
+      cards: start.concat(end),
     });
     this.handleAdd();
   };
@@ -45,12 +45,30 @@ export default class CardStack extends Component {
       <FlatList
         style={Styles.cardContainer}
         contentContainerStyle={Styles.cardStack}
-        data={this.state.users}
+        data={this.state.cards}
         renderItem={({item, index}) => (
           <Card
             {...item}
             index={index}
-            onSwipe={this.handleRemove}
+            cardWidth={350}
+            cardHeight={500}
+            cardRotationDegrees={20}
+            cardOpacityShift={0.5}
+            onSwipeRight={this.handleRemove}
+            onSwipeLeft={this.handleRemove}
+            onSwipeUp={this.handleRemove}
+            onSwipeDown={this.handleRemove}
+            leftSwipeThreshold={-150}
+            rightSwipeThreshold={150}
+            upSwipeThreshold={-150}
+            downSwipeThreshold={150}
+            cardImage={item.picture.large}
+            cardTextMain={`${item.name.first} ${item.name.last}`}
+            cardTextSecondary={item.email}
+            cardBorderWidth={1}
+            cardBorderColor={'#d3d3d3'}
+            cardBorderRadius={8}
+            cardBackgroundColor={'#fff'}
           />
         )}
         keyExtractor={(item) => item.login.username}
