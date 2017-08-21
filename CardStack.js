@@ -26,7 +26,7 @@ export default class CardStack extends Component {
             {...this.props}
           />
         )}
-        keyExtractor={(item) => item.login.username}
+        keyExtractor={(item) => item.key}
         scrollEnabled={false}
       />
     );
