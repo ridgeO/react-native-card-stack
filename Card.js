@@ -25,8 +25,6 @@ export default class Card extends Component {
         null, {dx: this.state.pan.x, dy: this.state.pan.y}
       ]),
       onPanResponderRelease: (e, {vx, vy}) => {
-        console.log(this.state.pan.x._value)
-        console.log(this.state.pan.y._value)
         if (this.state.pan.x._value < this.props.leftSwipeThreshold) {
           this.props.onSwipeLeft(this.props.index)
         } else if (this.state.pan.x._value > this.props.rightSwipeThreshold) {
@@ -49,7 +47,7 @@ export default class Card extends Component {
     this.state.pan.y.removeAllListeners();
   }
 
-  getMainCardStyle() {
+  getAnimatedViewStyle() {
     let {pan} = this.state;
     return [
       {position: 'absolute'},
@@ -63,8 +61,8 @@ export default class Card extends Component {
 
   render() {
     return (
-      <Animated.View style={this.getMainCardStyle()} {...this.panResponder.panHandlers}>
-        {this.props.renderCard}
+      <Animated.View style={this.getAnimatedViewStyle()} {...this.panResponder.panHandlers}>
+        {this.props.renderCard(this.props.item)}
       </Animated.View>
     );
   }
