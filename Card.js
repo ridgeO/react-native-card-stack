@@ -54,8 +54,8 @@ export default class Card extends Component {
       {left: this.props.cardWidth/2*-1},
       {top: this.props.cardHeight/2*-1},
       {transform: [{translateX: pan.x}, {translateY: pan.y},
-      {rotate: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [`-${this.props.cardRotationDegrees}deg`, '0deg', `${this.props.cardRotationDegrees}deg`]})}]},
-      {opacity: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [this.props.cardOpacityShift, 1, this.props.cardOpacityShift]})}
+      {rotate: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [`-${this.props.cardRotation}deg`, '0deg', `${this.props.cardRotation}deg`]})}]},
+      {opacity: pan.x.interpolate({inputRange: [this.props.leftSwipeThreshold, 0, this.props.rightSwipeThreshold], outputRange: [this.props.cardOpacity, 1, this.props.cardOpacity]})}
     ];
   }
 
