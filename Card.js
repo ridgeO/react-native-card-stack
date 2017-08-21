@@ -1,12 +1,8 @@
 'use strict';
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   PanResponder,
-  Animated,
-  View,
-  Image,
-  Text
+  Animated
 } from 'react-native';
 
 export default class Card extends Component {
@@ -53,24 +49,9 @@ export default class Card extends Component {
     this.state.pan.y.removeAllListeners();
   }
 
-  getCardStyle() {
-    return [
-      Styles.card,
-      {height: this.props.cardHeight},
-      {width: this.props.cardWidth},
-      {borderWidth: this.props.cardBorderWidth},
-      {borderColor: this.props.cardBorderColor},
-      {borderRadius: this.props.cardBorderRadius},
-      {justifyContent: 'center'},
-      {backgroundColor: this.props.cardBackgroundColor},
-      {overflow: 'hidden'}
-    ];
-  }
-
-  getAnimatedViewStyle() {
+  getMainCardStyle() {
     let {pan} = this.state;
     return [
-      Styles.mainCard,
       {position: 'absolute'},
       {left: this.props.cardWidth/2*-1},
       {top: this.props.cardHeight/2*-1},
@@ -82,36 +63,9 @@ export default class Card extends Component {
 
   render() {
     return (
-      <Animated.View style={this.getAnimatedViewStyle()} {...this.panResponder.panHandlers}>
-        <View style={this.getCardStyle()}>
-          <Image source={{uri: this.props.cardImage}} style={Styles.cardImage}/>
-          <View style={Styles.cardText}>
-            <Text style={Styles.cardTextMain}>{this.props.cardTextMain}</Text>
-            <Text style={Styles.cardTextSecondary}>{this.props.cardTextSecondary}</Text>
-          </View>
-        </View>
+      <Animated.View style={this.getMainCardStyle()} {...this.panResponder.panHandlers}>
+        {this.props.renderCard}
       </Animated.View>
     );
   }
 }
-
-const Styles = StyleSheet.create({
-  cardImage: {
-    flex: 1,
-    backgroundColor: '#1E90FF'
-  },
-  cardText: {
-    margin: 20
-  },
-  cardTextMain: {
-    textAlign: 'left',
-    fontSize: 20,
-    backgroundColor: 'transparent'
-  },
-  cardTextSecondary: {
-    textAlign: 'left',
-    fontSize: 15,
-    color: 'grey',
-    backgroundColor: 'transparent'
-  }
-})
