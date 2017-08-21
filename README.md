@@ -4,7 +4,7 @@ Still in beta. Looking to port over all of the goodness of http://www.platypusin
 
 Stay tuned for updates to come.
 
-![React Native Card Stack](https://github.com/ridgeo/react-native-card-stack/ScreenCaptures/SwipeCards.gif)
+![React Native Card Stack](https://github.com/ridgeO/react-native-card-stack/blob/master/ScreenCaptures/SwipeCards.gif?raw=true)
 
 ## Quick Start
 1. `npm install --save react-native-card-stack`
