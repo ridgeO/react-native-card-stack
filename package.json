@@ -1,6 +1,6 @@
 {
   "name": "react-native-card-stack",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A swipeable card stack component for React Native",
   "main": "CardStack.js",
   "scripts": {
