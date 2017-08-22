@@ -4,7 +4,7 @@ Still in beta. Looking to port over all of the goodness of http://www.platypusin
 
 Stay tuned for updates to come.
 
-![React Native Card Stack](https://github.com/ridgeO/react-native-card-stack/blob/master/ScreenCaptures/SwipeCards.gif?raw=true)
+![React Native Card Stack](https://github.com/ridgeO/react-native-card-stack/blob/master/ScreenCaptures/CardsSwipeapbleSmall.gif?raw=true)
 
 ## Quick Start
 1. `npm install --save react-native-card-stack`
@@ -74,7 +74,6 @@ export default class SwipeView extends Component {
   }
 
   render() {
-    console.log(flattenStyle(Styles.card).width)
     return (
       <CardStack
         cardList={this.state.cards}
