@@ -53,10 +53,9 @@ export default class SwipeView extends Component {
   };
 
   handleRemove = (index) => {
-    let start = this.state.cards.slice(0, index);
-    let end = this.state.cards.slice(index + 1);
+    this.state.cards.pop();
     this.setState({
-      cards: start.concat(end),
+      cards: this.state.cards
     });
     this.handleAdd();
   };

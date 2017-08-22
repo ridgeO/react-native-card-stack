@@ -18,7 +18,9 @@ export default class CardStack extends Component {
           alignItems: 'center',
           justifyContent: 'center'
         }}
+        scrollEnabled={false}
         data={this.props.cardList}
+        keyExtractor={(item) => item.key}
         renderItem={({item, index}) => (
           <Card
             index={index}
@@ -26,8 +28,6 @@ export default class CardStack extends Component {
             {...this.props}
           />
         )}
-        keyExtractor={(item) => item.key}
-        scrollEnabled={false}
       />
     );
   }
