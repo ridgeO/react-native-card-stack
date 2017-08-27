@@ -1,10 +1,12 @@
 # react-native-card-stack
 
-Still in beta. Looking to port over all of the goodness of http://www.platypusindustries.com/posts/7 including having the ability to pass a custom card to the list.
-
-Stay tuned for updates to come.
-
 ![React Native Card Stack](https://github.com/ridgeO/react-native-card-stack/raw/master/ScreenCaptures/SwipeCards.gif)
+
+Tinder really changed the game with it's card swiping interface. It's simple, visually appealing, and just plain fun.
+
+Perhaps that's why it's taken the mobile UI world by storm. These days there is a "Tinder of..." just about everything from [Music](http://thebestsong.co/) to [Pet Adoption](https://barkbuddy.com/).
+
+This component will make it easier to make your own "Tinder of..." by adding a stack of swipeable cards to your application. Based on the component built in our [Platypost](http://www.platypusindustries.com/posts/7).
 
 ## Quick Start
 1. `npm install --save react-native-card-stack`
