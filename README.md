@@ -106,7 +106,7 @@ export default class SwipeView extends Component {
         cardHeight={flattenStyle(Styles.card).height}
         cardWidth={flattenStyle(Styles.card).width}
         cardRotation={20}
-        cardOpacityShift={0.5}
+        cardOpacity={0.5}
         onSwipeRight={this.handleRemove}
         onSwipeLeft={this.handleRemove}
         onSwipeUp={this.handleRemove}
