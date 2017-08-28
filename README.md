@@ -16,7 +16,6 @@ This component will make it easier to make your own "Tinder of..." by adding a s
 ## Example
 ```javascript
 'use strict';
-'use strict';
 import React, { Component } from 'react';
 import {
   Text,
