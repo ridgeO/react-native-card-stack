@@ -24,7 +24,7 @@ import {
   StyleSheet
 } from 'react-native';
 import flattenStyle from 'flattenStyle';
-import CardStack from './CardStack.js';
+import CardStack from 'react-native-card-stack';
 
 export default class SwipeView extends Component {
 
@@ -105,7 +105,7 @@ export default class SwipeView extends Component {
         renderCard={this.renderCard}
         cardHeight={flattenStyle(Styles.card).height}
         cardWidth={flattenStyle(Styles.card).width}
-        cardRotationDegrees={20}
+        cardRotation={20}
         cardOpacityShift={0.5}
         onSwipeRight={this.handleRemove}
         onSwipeLeft={this.handleRemove}
